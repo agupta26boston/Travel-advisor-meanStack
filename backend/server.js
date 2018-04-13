@@ -1,23 +1,24 @@
-var express = require('express');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const http = require('http');
 var app = express();
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/trips')
+const api = require('./routes/api')
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-var userNew = mongoose.model('usernew', { name: String, gender: String });
+app.use('/api', api);
 
-userNew.create({
-    name: 'user1',
-    gender: 'female'
-}).then(function(err, usernew) {
-    console.log(err, usernew);
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.get('/', (req, res) => {
+const port = process.env.PORT || '3000';
+app.set('port',port);
 
-    res.send('hello new 1');
-})
+const server = http.createServer(app);
 
-
-app.listen(4321);
+server.listen(port, () => console.log(`Running on localhost:${port}`));
