@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import {Routes, RouterModule} from '@angular/router';
-import {DestinationsService} from './destinations.service';
 import { Component } from '@angular/core/src/metadata/directives';
 // app routes will hold all the routes and the array will be of javascript object.
 const appRoutes: Routes = [
@@ -37,8 +36,7 @@ const appRoutes: Routes = [
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  // service file will be the provider.
-  providers: [DestinationsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
