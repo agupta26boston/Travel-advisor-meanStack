@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DestinationsService} from '../destinations.service';
-import {}
+// import {DestinationsService} from '../destinations.service';
+
 
 @Component({
   selector: 'app-user',
@@ -9,7 +9,7 @@ import {}
 })
 export class UserComponent implements OnInit {
 
-  constructor(private destinationsService: DestinationsService ) { }
+  constructor() { }
 
   ngOnInit() {
   }
