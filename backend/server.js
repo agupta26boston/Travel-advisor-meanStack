@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 var app = express();
-const path = require('path');
 
 const api = require('./routes/api')
 
