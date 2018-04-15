@@ -10,6 +10,7 @@ import { Destination } from '../destination';
 export class HomeComponent implements OnInit {
 
   destinations: Array<Destination>;
+  searchedDest :Destination;
 
   constructor(private _destinationService: DestinationService) { }
 
@@ -17,5 +18,14 @@ export class HomeComponent implements OnInit {
     this._destinationService.getDestinations()
       .subscribe(res => this.destinations = res);
   }
+
+  searchDestination(title: string): Destination {
+    console.log("title is "+ title);
+   this.searchedDest= this.destinations
+    .filter(searchedDest => searchedDest.title === title)
+    .pop();
+    console.log(this.searchedDest.title);
+    return this.searchedDest;
+}
 
 }

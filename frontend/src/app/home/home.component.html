@@ -1,14 +1,15 @@
 
 <div class="container">
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search...">
+    <input #search type="text" class="form-control" placeholder="Search...">
     <span class="input-group-btn">
-      <button class="btn btn-primary" type="button">Go!</button>
+      <button class="btn btn-primary" type="button" (click) = 'searchDestination(search.value)'>Go!</button>
     </span>
+    
   </div>
 </div>
 
-
+<p>you searched for {{searchedDest.title}}</p> 
 
 <div class="container">
   <div class="row">
