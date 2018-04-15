@@ -33,9 +33,9 @@ module.exports = router;
 //     console.log(err, usernew);
 // });
 
-router.post('/create', function(req, res) {
+// router.post('/create', function(req, res) {
 
-    console.log('Creating a Trip/User');
-    var newTrip = new destinations()
+//     console.log('Creating a Trip/User');
+//     var newTrip = new destinations()
 
-})
+// })
