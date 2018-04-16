@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 
 
@@ -9,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  user: Array<User>;
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    // life cycle hook for this
+    // this.userService.getUser()
+    // .subscribe(res => this.user = res);
   }
 
 }

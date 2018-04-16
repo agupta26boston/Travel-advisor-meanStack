@@ -3,6 +3,7 @@ const router = express.Router();
 var mongoose = require('mongoose');
 const db = "mongodb://localhost:27017/trips";
 const trip = require('../models/trip');
+const user = require('../models/user');
 //Now, using trip to perform CRUD Operations.
 mongoose.Promise = global.Promise;
 //to connect to our database
@@ -24,18 +25,42 @@ router.get('/all', function(req, res) {
         });
 });
 
+router.get('/user', function(req, res) {
+    user.find({})
+        .exec(function(err, user) {
+            if (err) {
+                console.log('Error getting the user');
+            } else {
+                console.log(user);
+                res.json(user);
+            }
+        });
+});
+
+
 module.exports = router;
 
-// userNew.create({
-//     name: 'user1',
-//     gender: 'female'
-// }).then(function(err, usernew) {
-//     console.log(err, usernew);
+// user.create({
+//     userName: 'user1',
+//     password: 'try'
+// }).then(function(err, user) {
+//     console.log(err, user);
 // });
 
-// router.post('/create', function(req, res) {
+router.post('/create', function(req, res) {
 
-//     console.log('Creating a Trip/User');
-//     var newTrip = new destinations()
+    console.log('Creating a User');
+    var newUser = new user()
+    newUser.userName = req.body.userName;
+    newUser.password = req.body.password;
+    newUser.save(function(err, user) {
 
-// })
+        if (err) {
+            console.log('Error inserting the user')
+        } else {
+            res.json(user);
+        }
+    });
+
+
+})
