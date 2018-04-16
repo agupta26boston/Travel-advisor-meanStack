@@ -5,8 +5,9 @@ const db = "mongodb://localhost:27017/travelapp";
 const destination = require('../models/destination');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(db, function(err){
-    if(err) {
+//to connect to our database
+mongoose.connect(db, function(err) {
+    if (err) {
         console.log('Error connecting');
     }
 });
@@ -14,13 +15,13 @@ mongoose.connect(db, function(err){
 router.get('/all', function(req, res){
     destination.find({})
         .exec(function(err, destinations) {
-        if(err) {
-            console.log('Error getting the destinations');
-        } else {
-            console.log(destinations);
-            res.json(destinations);
-        }
-    });
+            if (err) {
+                console.log('Error getting the destinations');
+            } else {
+                console.log(destinations);
+                res.json(destinations);
+            }
+        });
 });
 
 router.get('/destinations/:id', function(req, res) {
@@ -42,4 +43,11 @@ module.exports = router;
 //     gender: 'female'
 // }).then(function(err, usernew) {
 //     console.log(err, usernew);
-// });0
+// });
+
+router.post('/create', function(req, res) {
+
+    console.log('Creating a Trip/User');
+    var newTrip = new destinations()
+
+})

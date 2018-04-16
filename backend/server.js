@@ -7,7 +7,8 @@ var app = express();
 const api = require('./routes/api')
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
+// extended: false, flag will restrict the use of nested object.
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 app.use('/api', api);
@@ -17,7 +18,7 @@ app.get('*', (req, res) => {
 });
 
 const port = process.env.PORT || '3000';
-app.set('port',port);
+app.set('port', port);
 
 const server = http.createServer(app);
 
