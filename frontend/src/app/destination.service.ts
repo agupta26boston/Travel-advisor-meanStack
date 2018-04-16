@@ -18,5 +18,5 @@ export class DestinationService {
     return this._http.get("/api/destinations/"+id)
       .map(result => this.result = result.json());
   }
-
+  
 }
