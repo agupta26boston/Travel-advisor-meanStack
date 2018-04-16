@@ -26,7 +26,9 @@ import { DestinationComponent } from './destination/destination.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    DestinationComponent
+    DestinationComponent,
+    UserComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
