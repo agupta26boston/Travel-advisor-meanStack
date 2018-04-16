@@ -20,7 +20,7 @@ export class CreateUserComponent {
     }, {validator: matchingFields('password', 'confirmPassword')});
    }
 
-   onSubmit() { 
+   onSubmit() {
      console.log(this.form.errors);
      this.user.register(this.form.value);
    }
