@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DestinationService } from '../destination.service';
+import { Destination } from '../destination';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  destinations: Array<Destination>;
+
+  constructor(private _destinationService: DestinationService) { }
 
   ngOnInit() {
+    this._destinationService.getDestinations()
+      .subscribe(res => this.destinations = res);
   }
 
 }

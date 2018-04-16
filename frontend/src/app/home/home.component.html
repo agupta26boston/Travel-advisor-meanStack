@@ -1,36 +1,15 @@
 <div class="container">
-    <p>Image Gallery</p>
+    <p>Destinations</p>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" *ngFor="let destination of destinations">
             <div class="thumbnail">
-                <a href="../assets/images/lights.jpg" target="_blank">
+                <a routerLink="/destinations/{{ destination._id }}">
                     <img src="../assets/images/lights.jpg" alt="Lights" style="width:100%">
                     <div class="caption">
-                        <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                        <h3> {{ destination.title }} </h3>
+                        <p> {{ destination.desc | slice: 0:330 }} </p>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <a href="../assets/images/lights.jpg" target="_blank">
-                    <img src="../assets/images/lights.jpg" alt="Nature" style="width:100%">
-                    <div class="caption">
-                        <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <a href="../assets/images/lights.jpg" target="_blank">
-                    <img src="../assets/images/lights.jpg" alt="Fjords" style="width:100%">
-                    <div class="caption">
-                        <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<div #gmap style="width:100%;height:400px"></div>
+        <!-- <div #gmap style="width:100%;height:400px"></div> -->

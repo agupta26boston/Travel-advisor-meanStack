@@ -1,20 +1,62 @@
 const express = require('express');
 const router = express.Router();
 var mongoose = require('mongoose');
-const db = "mongodb://localhost:27017/trips";
-const trip = require('../models/trip');
-const user = require('../models/user');
-//Now, using trip to perform CRUD Operations.
+const db = "mongodb://localhost:27017/travelapp";
+const destination = require('../models/destination');
+const attractions = require('../models/attraction');
 mongoose.Promise = global.Promise;
-//to connect to our database
 mongoose.connect(db, function(err) {
     if (err) {
         console.log('Error connecting');
     }
 });
 
+
+var boston = new destination({
+    _id: new mongoose.Types.ObjectId(),
+    title: 'Boston',
+    desc: "Welcome to Boston!"
+});
+
+boston.save(function(err) {
+    if (err) return handleError(err);
+});
+
+var attraction1 = new attractions({
+    destination_id: boston._id,
+    att_name: 'MFA',
+    att_desc: 'near NEU'
+});
+
+attraction1.save(function(err) {
+    if (err) return handleError(err);
+});
+
+
+boston.attractions.push(attraction1)
+boston.save(function(err) {
+    if (err) return handleError(err);
+});
+
+attractions.
+find({ destination_id: destination._id }).
+exec(function(err, attractions) {
+    if (err) return handleError(err);
+    console.log('The attractions are an array: ', attractions);
+});
+
+
+
+
+
+
+
+
+
+
+
 router.get('/all', function(req, res) {
-    trip.find({})
+    destination.find({})
         .exec(function(err, destinations) {
             if (err) {
                 console.log('Error getting the destinations');
@@ -25,42 +67,24 @@ router.get('/all', function(req, res) {
         });
 });
 
-router.get('/user', function(req, res) {
-    user.find({})
-        .exec(function(err, user) {
+router.get('/destinations/:id', function(req, res) {
+    console.log('Requesting a specific destination');
+    destination.findById(req.params.id)
+        .exec(function(err, destination) {
             if (err) {
-                console.log('Error getting the user');
+                console.log('Error getting the destination');
             } else {
-                console.log(user);
-                res.json(user);
+                res.json(destination);
+                console.log(destination);
             }
         });
 });
 
-
 module.exports = router;
 
-// user.create({
-//     userName: 'user1',
-//     password: 'try'
-// }).then(function(err, user) {
-//     console.log(err, user);
-// });
-
-router.post('/create', function(req, res) {
-
-    console.log('Creating a User');
-    var newUser = new user()
-    newUser.userName = req.body.userName;
-    newUser.password = req.body.password;
-    newUser.save(function(err, user) {
-
-        if (err) {
-            console.log('Error inserting the user')
-        } else {
-            res.json(user);
-        }
-    });
-
-
-})
+// userNew.create({
+//     name: 'user1',
+//     gender: 'female'
+// }).then(function(err, usernew) {
+//     console.log(err, usernew);
+// });0
