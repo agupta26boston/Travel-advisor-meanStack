@@ -1,14 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
+
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+
+import { HeaderComponent } from './header/header.component';
+import { DestinationService } from './destination.service';
+import { DestinationComponent } from './destination/destination.component';
+
 import { UserComponent } from './user/user.component';
 import {Routes, RouterModule} from '@angular/router';
 import { Component } from '@angular/core/src/metadata/directives';
 import {SocialLoginModule,AuthServiceConfig,FacebookLoginProvider,GoogleLoginProvider} from "angular5-social-login";
+
 
 
 
@@ -47,18 +56,23 @@ export function getAuthServiceConfigs() {
   declarations: [
     AppComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    HeaderComponent,
+    DestinationComponent,
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    HttpModule,
     SocialLoginModule,
     RouterModule.forRoot(appRoutes), // to register routes in angular
+
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
 
-  providers: [ {
+  providers: [DestinationService, {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
   }],
