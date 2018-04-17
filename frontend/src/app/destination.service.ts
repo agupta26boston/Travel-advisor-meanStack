@@ -19,6 +19,10 @@ export class DestinationService {
     return this._http.get("/api/destinations/"+id)
       .map(result => this.result = result.json());
   }
+  // getAttraction(id) {
+  //   return this._http.get("/api/destinations/"+id)
+  //     .map(result => this.result = result.json());
+  // }
 
   getUser() {
     return this._http.get("/api/users/me", this.auth.tokenHeader)

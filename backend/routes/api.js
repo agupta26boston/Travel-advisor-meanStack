@@ -24,9 +24,9 @@ mongoose.connect(db, function(err) {
 // });
 
 // var attraction1 = new attractions({
-//     destination_id: boston._id,
-//     att_name: 'MFA',
-//     att_desc: 'near NEU'
+//     destination_id: '5ad670bc78ccff22cc7e4559',
+//     att_name: 'MFA1',
+//     att_desc: 'near11 NEU'
 // });
 
 // attraction1.save(function(err) {
@@ -60,7 +60,7 @@ router.get('/all', function(req, res) {
 
 router.get('/destinations/:id', function(req, res) {
     console.log('Requesting a specific destination');
-    destination.findById(req.params.id)
+    destination.findById(req.params.id).populate('attractions')
         .exec(function(err, destination) {
             if (err) {
                 console.log('Error getting the destination');
