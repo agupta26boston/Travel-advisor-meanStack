@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import {DestinationsService} from '../destinations.service';
 
+
 import {
   AuthService,
   FacebookLoginProvider, GoogleLoginProvider} from 'angular5-social-login';
@@ -11,9 +12,11 @@ import {
 })
 export class UserComponent implements OnInit {
 
+
   constructor(private socialAuthService: AuthService) { }
 
   
+
 
   ngOnInit() {
 

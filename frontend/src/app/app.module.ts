@@ -57,10 +57,12 @@ export function getAuthServiceConfigs() {
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
+
   providers: [ {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
   }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
