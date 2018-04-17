@@ -5,8 +5,10 @@ const Schema = mongoose.Schema;
 //command: use 'name of db'
 //db.createCollection('user')
 const userSchema = new Schema({
-    userName: String,
+    firstName: String,
+    lastName: String,
+    email: String,
     password: String
 
 });
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('users', userSchema);

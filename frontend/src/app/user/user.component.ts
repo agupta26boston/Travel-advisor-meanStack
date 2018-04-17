@@ -12,12 +12,18 @@ import { User } from '../user';
 export class UserComponent implements OnInit {
 
   user: Array<User>;
-  constructor(private userService: UserService) { }
+  constructor(private auth: UserService) { }
+
+  loginData = {
+    email: '',
+    password: ''
+  }
+
+  login() {
+    this.auth.login(this.loginData);
+  }
 
   ngOnInit() {
-    // life cycle hook for this
-    // this.userService.getUser()
-    // .subscribe(res => this.user = res);
   }
 
 }
