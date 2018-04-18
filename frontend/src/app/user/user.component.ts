@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import {DestinationsService} from '../destinations.service';
+import { UserService } from '../user.service';
+import { User } from '../user';
+
 
 
 import {
@@ -12,11 +14,17 @@ import {
 })
 export class UserComponent implements OnInit {
 
+  user: Array<User>;
+  constructor(private auth: UserService, private socialAuthService: AuthService) { }
 
-  constructor(private socialAuthService: AuthService) { }
+  loginData = {
+    email: '',
+    password: ''
+  }
 
-  
-
+  login() {
+    this.auth.login(this.loginData);
+  }
 
   ngOnInit() {
 

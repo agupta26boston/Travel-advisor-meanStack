@@ -3,22 +3,56 @@ const router = express.Router();
 var mongoose = require('mongoose');
 const db = "mongodb://localhost:27017/travelapp";
 const destination = require('../models/destination');
+const attractions = require('../models/attraction');
 
 mongoose.Promise = global.Promise;
-//to connect to our database
 mongoose.connect(db, function(err) {
     if (err) {
         console.log('Error connecting');
     }
 });
 
-router.get('/all', function(req, res){
+
+// var boston = new destination({
+//     _id: new mongoose.Types.ObjectId(),
+//     title: 'Boston',
+//     desc: "Welcome to Boston!"
+// });
+
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
+
+// var attraction1 = new attractions({
+//     destination_id: '5ad670bc78ccff22cc7e4559',
+//     att_name: 'MFA1',
+//     att_desc: 'near11 NEU'
+// });
+
+// attraction1.save(function(err) {
+//     if (err) return handleError(err);
+// });
+
+
+// boston.attractions.push(attraction1)
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
+
+// attractions.
+// find({ destination_id: destination._id }).
+// exec(function(err, attractions) {
+//     if (err) return handleError(err);
+//     console.log('The attractions are an array: ', attractions);
+// });
+
+router.get('/all', function(req, res) {
     destination.find({})
         .exec(function(err, destinations) {
             if (err) {
                 console.log('Error getting the destinations');
             } else {
-                console.log(destinations);
+                // console.log(destinations);
                 res.json(destinations);
             }
         });
@@ -26,15 +60,36 @@ router.get('/all', function(req, res){
 
 router.get('/destinations/:id', function(req, res) {
     console.log('Requesting a specific destination');
-    destination.findById(req.params.id)
+    destination.findById(req.params.id).populate('attractions')
         .exec(function(err, destination) {
-            if(err) {
+            if (err) {
                 console.log('Error getting the destination');
             } else {
                 res.json(destination);
+                // console.log(destination);
             }
         });
 });
+
+router.get('/users/me', checkAuthenticated, (req,res) => {
+    res.json(users[req.user]);
+});
+
+function checkAuthenticated(req, res, next) {
+    if(!req.header('authorization'))
+        return res.status(401).send({message: 'Unauthorized requested. Missing authentication header'});
+
+    var token = req.header('authorization').split(' ')[1];
+
+    var payload = jwt.decode(token, '123');
+
+    if(!payload)
+        return res.status(401).send({message: 'Unauthorized requested. Authentication header invalid'});
+
+    req.user = payload;
+
+    next();
+}
 
 module.exports = router;
 
@@ -43,11 +98,4 @@ module.exports = router;
 //     gender: 'female'
 // }).then(function(err, usernew) {
 //     console.log(err, usernew);
-// });
-
-router.post('/create', function(req, res) {
-
-    console.log('Creating a Trip/User');
-    var newTrip = new destinations()
-
-})
+// });0
