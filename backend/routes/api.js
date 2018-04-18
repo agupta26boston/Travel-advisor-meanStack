@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 var mongoose = require('mongoose');
-const db = "mongodb://localhost:27017/trips";
-const trip = require('../models/trip');
-//Now, using trip to perform CRUD Operations.
+const db = "mongodb://localhost:27017/travelapp";
+const destination = require('../models/destination');
+
 mongoose.Promise = global.Promise;
 //to connect to our database
 mongoose.connect(db, function(err) {
@@ -12,14 +12,26 @@ mongoose.connect(db, function(err) {
     }
 });
 
-router.get('/all', function(req, res) {
-    trip.find({})
+router.get('/all', function(req, res){
+    destination.find({})
         .exec(function(err, destinations) {
             if (err) {
                 console.log('Error getting the destinations');
             } else {
                 console.log(destinations);
                 res.json(destinations);
+            }
+        });
+});
+
+router.get('/destinations/:id', function(req, res) {
+    console.log('Requesting a specific destination');
+    destination.findById(req.params.id)
+        .exec(function(err, destination) {
+            if(err) {
+                console.log('Error getting the destination');
+            } else {
+                res.json(destination);
             }
         });
 });
