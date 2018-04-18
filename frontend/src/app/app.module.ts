@@ -8,39 +8,69 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {Routes, RouterModule} from '@angular/router';
-import { Component } from '@angular/core/src/metadata/directives';
-import {UserService } from './user.service';
-import { CreateUserComponent } from './create-user/create-user.component';
-// app routes will hold all the routes and the array will be of javascript object.
 
 import { HeaderComponent } from './header/header.component';
 import { DestinationService } from './destination.service';
 import { DestinationComponent } from './destination/destination.component';
 
+import { UserComponent } from './user/user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
+import { Component } from '@angular/core/src/metadata/directives';
+import {SocialLoginModule,AuthServiceConfig,FacebookLoginProvider,GoogleLoginProvider} from "angular5-social-login";
+
+
+
+
+// app routes will hold all the routes and the array will be of javascript object.
+
+import {UserService } from './user.service';
+import { CreateUserComponent } from './create-user/create-user.component';
+// app routes will hold all the routes and the array will be of javascript object.
+
+
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("1726553447414314")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("353435284490-u6e340tln57tvjet0vnuo3i2749pe0je.apps.googleusercontent.com")
+        }
+      ]
+  );
+  return config;
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    UserComponent,
     HeaderComponent,
     DestinationComponent,
-    UserComponent,
     CreateUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    SocialLoginModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [DestinationService, UserService],
+
+  providers: [DestinationService, {
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  }, UserService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
