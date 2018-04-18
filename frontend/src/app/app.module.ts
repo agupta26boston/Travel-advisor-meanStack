@@ -26,6 +26,8 @@ import {SocialLoginModule,AuthServiceConfig,FacebookLoginProvider,GoogleLoginPro
 
 import {UserService } from './user.service';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { AttractionComponent } from './attraction/attraction.component';
+import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
 // app routes will hold all the routes and the array will be of javascript object.
 
 
@@ -52,7 +54,9 @@ export function getAuthServiceConfigs() {
     UserComponent,
     HeaderComponent,
     DestinationComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    AttractionComponent,
+    AttractionDetailsComponent
   ],
   imports: [
     BrowserModule,
