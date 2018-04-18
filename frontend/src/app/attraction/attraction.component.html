@@ -1,3 +1,21 @@
 <p>
-  attraction works!
+    Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}}
 </p>
+
+<ul class="nav-filter__list">
+    <li class="nav-filter__item ">
+        <a href="/travel-guide/atlanta">Overview</a>
+    </li>
+    <li class="nav-filter__item ">
+        <a href="/travel-guide/atlanta/hotels">Reviews by other users</a>
+    </li>
+    <li class="nav-filter__item ">
+        <a href="/travel-guide/atlanta/restaurants">Photos</a>
+    </li>
+    <li class="nav-filter__item ">
+        <a href="/travel-guide/atlanta/bars">Audio</a>
+    </li>
+
+</ul>
+
+<app-attraction-details></app-attraction-details>
