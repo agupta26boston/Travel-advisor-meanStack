@@ -6,27 +6,27 @@ import { UserService } from './user.service';
 @Injectable()
 export class DestinationService {
 
-  result:any;
+  result: any;
 
   constructor(private _http: Http, private auth: UserService) { }
 
-  getDestinations(){
-    return this._http.get("/api/all")
+  getDestinations() {
+    return this._http.get('/api/all')
       .map(result => this.result = result.json());
   }
 
   getDestination(id) {
-    return this._http.get("/api/destinations/"+id)
+    return this._http.get('/api/destinations/' + id)
       .map(result => this.result = result.json());
   }
-  // getAttraction(id) {
-  //   return this._http.get("/api/destinations/"+id)
-  //     .map(result => this.result = result.json());
-  // }
+  getAttraction(id) {
+    return this._http.get('/api/attractions/' + id)
+      .map(result => this.result = result.json());
+  }
 
   getUser() {
-    return this._http.get("/api/users/me", this.auth.tokenHeader)
+    return this._http.get('/api/users/me', this.auth.tokenHeader)
       .map(result => this.result = result.json());
   }
-  
+
 }

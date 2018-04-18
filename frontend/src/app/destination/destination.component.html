@@ -1,8 +1,15 @@
-<div *ngIf="destination">
-  <a routerLink="#">{{ destination.title }}</a>
-  <p> {{ destination.desc }} </p>
-  <div *ngFor="let attrac of destination.attractions">
-    <p> {{ attrac.att_name}} </p>
-    <p> {{ attrac.att_desc}} </p>
-  </div>
-</div>
+<div class="container" *ngIf="destination">
+    <a routerLink="#">{{ destination.title }}</a>
+    <p> {{ destination.desc }} </p>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let attrac of destination.attractions">
+            <div class=" thumbnail ">
+                <a routerLink="/attractions/{{ attrac._id }} ">
+                    <img src="../assets/images/lights.jpg " alt="Lights " style="width:100% ">
+                    <div class="caption ">
+                        <h3> {{ attrac.att_name }} </h3>
+                        <p> {{ attrac.att_desc | slice: 0:330 }} </p>
+                    </div>
+                </a>
+            </div>
+        </div>
