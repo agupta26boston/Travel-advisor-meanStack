@@ -14,6 +14,7 @@ import { DestinationService } from './destination.service';
 import { DestinationComponent } from './destination/destination.component';
 
 import { UserComponent } from './user/user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { Component } from '@angular/core/src/metadata/directives';
 import {SocialLoginModule,AuthServiceConfig,FacebookLoginProvider,GoogleLoginProvider} from "angular5-social-login";
@@ -22,19 +23,11 @@ import {SocialLoginModule,AuthServiceConfig,FacebookLoginProvider,GoogleLoginPro
 
 
 // app routes will hold all the routes and the array will be of javascript object.
-const appRoutes: Routes = [
-  {
-    // will create a URL: localhost:4200
-    path: '',
-    component: HomeComponent
-  } ,
-  {
-    // will create a URL: localhost:4200/login
-    path: 'login',
-    component: UserComponent
-  }
 
-];
+import {UserService } from './user.service';
+import { CreateUserComponent } from './create-user/create-user.component';
+// app routes will hold all the routes and the array will be of javascript object.
+
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -59,23 +52,24 @@ export function getAuthServiceConfigs() {
     UserComponent,
     HeaderComponent,
     DestinationComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
     SocialLoginModule,
-    RouterModule.forRoot(appRoutes), // to register routes in angular
-
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
 
   providers: [DestinationService, {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
-  }],
+  }, UserService],
 
   bootstrap: [AppComponent]
 })
