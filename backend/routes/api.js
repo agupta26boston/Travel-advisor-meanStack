@@ -13,31 +13,31 @@ mongoose.connect(db, function(err) {
 });
 
 
-var boston = new destination({
-    _id: new mongoose.Types.ObjectId(),
-    title: 'Boston',
-    desc: "Welcome to Boston!"
-});
+// var boston = new destination({
+//     _id: new mongoose.Types.ObjectId(),
+//     title: 'Boston',
+//     desc: "Welcome to Boston!"
+// });
 
-boston.save(function(err) {
-    if (err) return handleError(err);
-});
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
-var attraction1 = new attractions({
-    destination_id: '5ad670bc78ccff22cc7e4559',
-    att_name: 'MFA1',
-    att_desc: 'near11 NEU'
-});
+// var attraction1 = new attractions({
+//     destination_id: '5ad670bc78ccff22cc7e4559',
+//     att_name: 'MFA1',
+//     att_desc: 'near11 NEU'
+// });
 
-attraction1.save(function(err) {
-    if (err) return handleError(err);
-});
+// attraction1.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
 
-boston.attractions.push(attraction1)
-boston.save(function(err) {
-    if (err) return handleError(err);
-});
+// boston.attractions.push(attraction1)
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
 // attractions.
 // find({ destination_id: destination._id }).

@@ -29,4 +29,14 @@ export class DestinationService {
       .map(result => this.result = result.json());
   }
 
-}
+  // addcomment(){
+  //   register(user) {
+  //     delete user.confirmPassword;
+  //     this._http.post('/auth/createUser', user).subscribe(res => {
+  //       this.authenticate(res);
+  //     });
+  //   }
+
+  }
+
+
