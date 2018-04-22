@@ -1,3 +1,44 @@
+
 <p>
     attraction-details works!
 </p>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+
+
+<div class="form-group">
+        <h2>Leave a Replay</h2>
+        <form ng-controller="Controller">
+            <textarea class="form-control" rows="5" ng-model="cmtName" placeholder="Your Comment"></textarea>
+            <br/>
+            <button class="btn btn-success btn-md pull-right" ng-click='btn_post();'>Comment</button>
+            <br/>
+            <hr/>
+            <h3>Comments</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="cmt in comments"> {{ cmt }}
+                    <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash" style="color:red; float:right;"></span></a>
+                </li>
+            </ul>
+        </form> 
+    </div>
+    <script type="text/javascript">
+        function Controller($scope) {
+             $scope.comments = [];
+             $scope.btn_post = function() {
+                 if ($scope.cmtName != '') {
+                     $scope.comments.push($scope.cmtName);
+                     $scope.cmtName = "";
+                 }
+             }
+             $scope.post_cmt = function($home) {
+                 $scope.comments.splice($home, 1);
+             }
+         }
+        </script>
+
+   
+       
+
