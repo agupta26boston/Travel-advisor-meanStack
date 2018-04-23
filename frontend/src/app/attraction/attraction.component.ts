@@ -10,7 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AttractionComponent implements OnInit {
   attraction: Array<Attraction>;
-
   constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute) { }
 
   ngOnInit() {
@@ -21,4 +20,5 @@ export class AttractionComponent implements OnInit {
         .subscribe(res => this.attraction = res);
   });
 }
+
 }
