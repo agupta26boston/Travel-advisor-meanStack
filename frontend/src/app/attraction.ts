@@ -4,3 +4,5 @@ export class Attraction {
     att_desc: string;
     comments:Array<String>;
 }
+
+//export const comments: string[]=[""];
