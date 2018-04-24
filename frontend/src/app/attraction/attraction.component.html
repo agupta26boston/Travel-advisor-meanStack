@@ -11,65 +11,12 @@
 <body> -->
 <p>
     Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}}
+    Comments is: {{attraction.comments}}
 </p>
 
-<ul class="nav-filter__list">
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta">Overview</a>
-    </li>
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta/hotels">Reviews by other users</a>
-    </li>
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta/restaurants">Photos</a>
-    </li>
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta/bars">Audio</a>
-    </li>
-
-</ul>
-<div class="article-container">
-    <form [formGroup]="form" >
 
 
-    <!-- <input #search type="text" class="form-control" placeholder="First Name" formControlName="firstName" autofocus required> -->
+    
+ 
+  
 
-        <div class="row expanded">
-            <div class="small-12 columns">
-                <label>Comments
-                    <input #search id="test" type="text" name="title"  class="form-control" formControlName="title" autofocus required>
-                </label>
-                <div class="alert" *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
-                    You must specify a title that's at least 10 characters long.
-                </div> 
-
-      
-                <button class="btn btn-primary" type="button" (click) = 'addAttraction(search.value)'>Go!</button>
-                
-            </div>
-        </div>
-    </form>
-</div>
-<div *ngFor="let comm of attraction.comments">
-    <p> {{ comm.comment_content }} </p>
-</div>
-<!-- <input type="file" name="file" id="file" (change)="onFileChanged($event)" /> -->
-<!-- <script type="text/javascript">
-function Controller($scope) {
-     $scope.comments = [];
-     $scope.btn_post = function() {
-         if ($scope.cmtName != '') {
-             $scope.comments.push($scope.cmtName);
-             $scope.cmtName = "";
-         }
-     }
-     $scope.post_cmt = function($home) {
-         $scope.comments.splice($home, 1);
-     }
- }
-</script> -->
-<!-- </body>
-
-</html> -->
-
-<!-- <app-attraction-details></app-attraction-details> -->

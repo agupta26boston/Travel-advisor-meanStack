@@ -16,12 +16,7 @@ export class AttractionComponent implements OnInit {
 
   commentFrm: FormGroup;
   attraction: Array<Attraction>;
-  comment: Array<Comment>;
-
- //public files: any[];
- //  this.files = [];
-  constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute,private fb: FormBuilder) {}
-   
+  constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -35,25 +30,5 @@ export class AttractionComponent implements OnInit {
   });
 }
 
-
-// addComment(comment : Comment) {
-// //  console.log("form value" + attr);
-//   this._destinationService.insertComment(comment)
-//     .subscribe(newComment => {
-//       this.comment.push(newComment);
-//       this.router.navigated = false;
-//     })
-// }
-
-// onFileChanged(event: any) {
-//   this.files = event.target.files;
-// }
-
-// onUpload() {
-//   const formData = new FormData();
-//   for (const file of this.files) {
-//       formData.append(name, file, file.name);
-//   }
-  // this._http.post('url', formData).subscribe(x => ....);
 }
 

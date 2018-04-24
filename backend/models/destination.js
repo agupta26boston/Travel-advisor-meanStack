@@ -7,6 +7,7 @@ const destinationSchema = new Schema({
     _id: Schema.Types.ObjectId,
     title: String,
     desc: String,
+    img_src:String,
     attractions: [{ type: Schema.Types.ObjectId, ref: 'attractions' }]
 });
 

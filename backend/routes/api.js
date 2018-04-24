@@ -42,6 +42,7 @@ router.post('/addcomments', function(req, res) {
 //     destination_id: '5ad670bc78ccff22cc7e4559',
 //     att_name: 'MFA1',
 //     att_desc: 'near11 NEU'
+
 // });
 
 // attraction1.save(function(err) {
@@ -95,7 +96,7 @@ router.get('/attractions/:id', function(req, res) {
                 console.log('Error getting the destination');
             } else {
                 res.json(attractions);
-                // console.log(destination);
+                 console.log(attractions);
             }
         });
 });
