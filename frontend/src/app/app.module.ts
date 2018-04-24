@@ -28,6 +28,7 @@ import {UserService } from './user.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { AttractionComponent } from './attraction/attraction.component';
 import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
+import { WorldsBestComponent } from './worlds-best/worlds-best.component';
 // app routes will hold all the routes and the array will be of javascript object.
 
 
@@ -56,7 +57,8 @@ export function getAuthServiceConfigs() {
     DestinationComponent,
     CreateUserComponent,
     AttractionComponent,
-    AttractionDetailsComponent
+    AttractionDetailsComponent,
+    WorldsBestComponent
   ],
   imports: [
     BrowserModule,

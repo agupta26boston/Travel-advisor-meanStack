@@ -12,52 +12,55 @@ mongoose.connect(db, function(err) {
     }
 });
 
-auth.post('/login', function(req, res) { 
-    user.findOne({email: req.body.email}, function(err, loginUser) {
-        if (err) throw err;
+auth.post('/login', function(req, res) {
+    user.findOne({ email: req.body.email }, function(err, loginUser) {
+        if (err)
+            throw err;
+        console.log(err.details);
+
 
         if (!loginUser) {
-        res.send({
-            success: false,
-            message: 'Authentication failed. User not found.'
-        });
+            res.send({
+                success: false,
+                message: 'Authentication failed. User not found.'
+            });
         } else {
             // Check if password matches
-              if (loginUser.password == req.body.password) {
+            if (loginUser.password == req.body.password) {
                 // Create token if the password matched and no error was thrown
                 var token = jwt.sign(loginUser.id, '123');
                 res.json({ firstName: loginUser.firstName, token });
-              } else {
+            } else {
                 res.send({
-                  success: false,
-                  message: 'Authentication failed. Passwords did not match.'
+                    success: false,
+                    message: 'Authentication failed. Passwords did not match.'
                 });
             }
-          }
+        }
     });
 
-    // if(!loginUser) 
+    // if (!loginUser)
     //     sendAuthError(res);
 
-    // if(user.password == req.body.password)
+    // if (user.password == req.body.password)
     //     sendToken(newUser, res);
     // else
     //     sendAuthError(res);
- });
+});
 
 auth.post('/createUser', function(req, res) {
     let newUser = new user();
-        newUser.firstName= req.body.firstName;
-        newUser.lastName= req.body.lastName;
-        newUser.email= req.body.email;
-        newUser.password= req.body.password;
-        newUser.save(function(err, user) {
+    newUser.firstName = req.body.firstName;
+    newUser.lastName = req.body.lastName;
+    newUser.email = req.body.email;
+    newUser.password = req.body.password;
+    newUser.save(function(err, user) {
         if (err) {
             console.log('Error connecting');
-        }     
-        });
-        
-        sendToken(newUser, res);   
+        }
+    });
+
+    sendToken(newUser, res);
 });
 
 function sendToken(user, res) {
@@ -66,7 +69,7 @@ function sendToken(user, res) {
 }
 
 function sendAuthError(res) {
-    return res.json({ success: false, message: 'email or password incorrect'});
+    return res.json({ success: false, message: 'email or password incorrect' });
 }
 
 

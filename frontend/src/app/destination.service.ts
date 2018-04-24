@@ -29,4 +29,5 @@ export class DestinationService {
       .map(result => this.result = result.json());
   }
 
+
 }

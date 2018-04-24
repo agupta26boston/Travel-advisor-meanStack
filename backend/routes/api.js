@@ -106,10 +106,3 @@ function checkAuthenticated(req, res, next) {
 }
 
 module.exports = router;
-
-// userNew.create({
-//     name: 'user1',
-//     gender: 'female'
-// }).then(function(err, usernew) {
-//     console.log(err, usernew);
-// });0
