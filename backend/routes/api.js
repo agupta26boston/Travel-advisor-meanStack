@@ -13,25 +13,26 @@ mongoose.connect(db, function(err) {
     }
 });
 
-router.post('/addcomments', function(req, res) {
+router.post('/attractions/:id', function(req, res) {
     console.log('Posting a comment');
    // var product = new campSchema.Product(req.body.dataProduct);
-    //var attraction = new attractions();
+    //var attraction = new attractions();    
     var newComment = new comment();
-    comment.comment_content = req.body.comment_content;
+    newComment.comment_content = req.body.comment_content;     
     newComment.save(function(err, comment) {
         if(err) {
             console.log('Error inserting a comment');
         } else {
             res.json(comment);
         }
-    })
+    });
+    // attractions.findById(req.params.id).comments.push(newComment)  
 });
 
 // var boston = new destination({
 //     _id: new mongoose.Types.ObjectId(),
-//     title: 'Boston',
-//     desc: "Welcome to Boston!"
+//     title: 'Ney York',
+//     desc: "Welcome to NY!"
 // });
 
 // boston.save(function(err) {
@@ -39,16 +40,28 @@ router.post('/addcomments', function(req, res) {
 // });
 
 // var attraction1 = new attractions({
-//     destination_id: '5ad670bc78ccff22cc7e4559',
-//     att_name: 'MFA1',
-//     att_desc: 'near11 NEU'
-
+//     destination_id: boston._id,
+//     att_name: 'aatt1',
+//     att_desc: 'near nY'
 // });
 
 // attraction1.save(function(err) {
 //     if (err) return handleError(err);
 // });
 
+// var comment1 = new comment({
+//     attraction_id: attraction1._id,
+//     comment_content: "THis is a comment underNY"
+// });
+
+// comment1.save(function(err) {
+//     if (err) return handleError(err);
+// });
+
+// attraction1.comments.push(comment1)
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
 // boston.attractions.push(attraction1)
 // boston.save(function(err) {
@@ -93,7 +106,7 @@ router.get('/attractions/:id', function(req, res) {
     attractions.findById(req.params.id).populate('comments')
         .exec(function(err, attractions) {
             if (err) {
-                console.log('Error getting the destination');
+                console.log('Error getting the attraction');
             } else {
                 res.json(attractions);
                  console.log(attractions);

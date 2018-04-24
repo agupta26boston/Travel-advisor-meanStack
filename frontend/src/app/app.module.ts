@@ -57,8 +57,7 @@ export function getAuthServiceConfigs() {
     HeaderComponent,
     DestinationComponent,
     CreateUserComponent,
-    AttractionComponent,
-    // AttractionDetailsComponent
+    AttractionComponent
   ],
   imports: [
     BrowserModule,

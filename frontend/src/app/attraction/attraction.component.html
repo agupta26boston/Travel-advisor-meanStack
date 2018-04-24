@@ -10,9 +10,25 @@
 </head>
 <body> -->
 <p>
-    Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}}
-    Comments is: {{attraction.comments}}
+    Name of Attraction is : {{ attraction?.att_name}} Description of Attraction is:: {{ attraction?.att_desc}}
 </p>
+<div class="container">
+	<form [formGroup]="commentFrm" (ngSubmit)="addComment(commentFrm.value)" *ngIf="commentFrm">
+		<div class="row">
+			<div class="col-md-3">
+				<label>
+					Add Comment
+					<input type="text" name="comment_content" [formControl]="commentFrm.controls['comment_content']" formControlName="comment_content">
+				</label>
+				<input type="submit" class="cta-btn filled" value="Post Comment" [disabled]="!commentFrm.valid">
+			</div>
+		</div>
+	</form>
+  </div>
+  
+<div *ngFor="let comm of attraction?.comments">
+		<p>Comments is: {{comm.comment_content}}</p>
+	</div>
 
 
 

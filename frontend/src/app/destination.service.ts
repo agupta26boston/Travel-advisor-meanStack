@@ -38,13 +38,12 @@ export class DestinationService {
   //       this.authenticate(res);
   //     });
   //   }
-  insertComment(post: Comment){
+  insertComment(post: Comment,id){
 
     let headers= new Headers({'Content-Type': 'application/json'});
     let options= new RequestOptions({ headers: headers });
-
-    return this._http.post('/api/addComments',JSON.stringify(post),options)
-    .map(result=>this.result.json());
+    return this._http.post('/api/attractions/' + id,JSON.stringify(post),options)
+    .map(result=>this.result = result.json());
   }
   }
 
