@@ -18,15 +18,15 @@ export class DestinationComponent implements OnInit {
 
   ngOnInit() {
     this.aR.params.subscribe((params) => {
-      let id = params['id'];
+      const id = params['id'];
 
       this._destinationService.getDestination(id)
         .subscribe(res => this.destination = res);
 
       // this._destinationService.getAttraction(id)
-      //   .subscribe(res => this.attraction = res); 
+      //   .subscribe(res => this.attraction = res);
     });
-       
+
   }
 
 }

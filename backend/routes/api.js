@@ -12,6 +12,13 @@ mongoose.connect(db, function(err) {
     }
 });
 
+router.post('/addcomments', function(req, res) {
+    console.log('Posting an comment');
+   // var product = new campSchema.Product(req.body.dataProduct);
+    //var attraction = new attractions();
+    var comment = req.body.title;
+    console.log(comment);
+});
 
 // var boston = new destination({
 //     _id: new mongoose.Types.ObjectId(),
@@ -47,6 +54,7 @@ mongoose.connect(db, function(err) {
 // });
 
 router.get('/all', function(req, res) {
+    console.log('Getting the destinations');
     destination.find({})
         .exec(function(err, destinations) {
             if (err) {
@@ -71,20 +79,33 @@ router.get('/destinations/:id', function(req, res) {
         });
 });
 
-router.get('/users/me', checkAuthenticated, (req,res) => {
+router.get('/attractions/:id', function(req, res) {
+    console.log('Requesting a specific attraction');
+    attractions.findById(req.params.id)
+        .exec(function(err, attractions) {
+            if (err) {
+                console.log('Error getting the destination');
+            } else {
+                res.json(attractions);
+                // console.log(destination);
+            }
+        });
+});
+
+router.get('/users/me', checkAuthenticated, (req, res) => {
     res.json(users[req.user]);
 });
 
 function checkAuthenticated(req, res, next) {
-    if(!req.header('authorization'))
-        return res.status(401).send({message: 'Unauthorized requested. Missing authentication header'});
+    if (!req.header('authorization'))
+        return res.status(401).send({ message: 'Unauthorized requested. Missing authentication header' });
 
     var token = req.header('authorization').split(' ')[1];
 
     var payload = jwt.decode(token, '123');
 
-    if(!payload)
-        return res.status(401).send({message: 'Unauthorized requested. Authentication header invalid'});
+    if (!payload)
+        return res.status(401).send({ message: 'Unauthorized requested. Authentication header invalid' });
 
     req.user = payload;
 
