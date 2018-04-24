@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { UserService } from './user.service';
+import {Attraction} from './attraction';
 
 @Injectable()
 export class DestinationService {
@@ -29,5 +30,26 @@ export class DestinationService {
       .map(result => this.result = result.json());
   }
 
+<<<<<<< HEAD
 
 }
+=======
+  // addcomment(){
+  //   register(user) {
+  //     delete user.confirmPassword;
+  //     this._http.post('/auth/createUser', user).subscribe(res => {
+  //       this.authenticate(res);
+  //     });
+  //   }
+insertAttraction(post:string){
+
+    let headers= new Headers({'Content-Type':'application-json'});
+    let options= new RequestOptions({headers:headers});
+
+    return this._http.post('/api/addComments',JSON.stringify(post),options)
+    .map(result=>this.result.json());
+  }
+  }
+
+
+>>>>>>> master

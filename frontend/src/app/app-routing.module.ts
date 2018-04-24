@@ -9,7 +9,7 @@ import { WorldsBestComponent } from './worlds-best/worlds-best.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
