@@ -6,7 +6,7 @@ const attractionSchema = new Schema({
     destination_id: { type: Schema.Types.ObjectId, ref: 'destinations' },
     att_name: String,
     att_desc: String,
-    comments: Array
+    comments: [{ type: Schema.Types.ObjectId, ref: 'comments' }]
 
 });
 

@@ -9,9 +9,9 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 </head>
 <body> -->
-<!-- <p>
+<p>
     Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}}
-</p> -->
+</p>
 
 <ul class="nav-filter__list">
     <li class="nav-filter__item ">
@@ -36,7 +36,7 @@
 
         <div class="row expanded">
             <div class="small-12 columns">
-                <label>Article Title
+                <label>Comments
                     <input #search id="test" type="text" name="title"  class="form-control" formControlName="title" autofocus required>
                 </label>
                 <div class="alert" *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
@@ -45,12 +45,15 @@
 
       
                 <button class="btn btn-primary" type="button" (click) = 'addAttraction(search.value)'>Go!</button>
-
+                
             </div>
         </div>
     </form>
 </div>
-<input type="file" name="file" id="file" (change)="onFileChanged($event)" />
+<div *ngFor="let comm of attraction.comments">
+    <p> {{ comm.comment_content }} </p>
+</div>
+<!-- <input type="file" name="file" id="file" (change)="onFileChanged($event)" /> -->
 <!-- <script type="text/javascript">
 function Controller($scope) {
      $scope.comments = [];

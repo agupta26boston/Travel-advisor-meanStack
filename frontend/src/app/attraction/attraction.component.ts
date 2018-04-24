@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Attraction } from '../attraction';
+import { Comment } from '../comment';
 import { DestinationService } from '../destination.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,8 +14,9 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 })
 export class AttractionComponent implements OnInit {
 
-  form:FormGroup;
+  commentFrm: FormGroup;
   attraction: Array<Attraction>;
+  comment: Array<Comment>;
 
  //public files: any[];
  //  this.files = [];
@@ -22,9 +24,10 @@ export class AttractionComponent implements OnInit {
    
 
   ngOnInit() {
-   this.form = this.fb.group({
-    'title' : [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(45)])]
-   });
+
+    // this.commentFrm = this.fb.group({
+    //   'comment_content' : [null, Validators.compose([Validators.minLength(10), Validators.maxLength(45)])]
+    // });
     this.aR.params.subscribe((params) => {
       const id = params['id'];
       this._destinationService.getAttraction(id)
@@ -33,14 +36,14 @@ export class AttractionComponent implements OnInit {
 }
 
 
-addAttraction(attr : string) {
- console.log("form value" + attr);
-  this._destinationService.insertAttraction(attr)
-    .subscribe(newArticle => {
-      this.attraction.push(newArticle);
-      this.router.navigateByUrl('/');
-    })
-}
+// addComment(comment : Comment) {
+// //  console.log("form value" + attr);
+//   this._destinationService.insertComment(comment)
+//     .subscribe(newComment => {
+//       this.comment.push(newComment);
+//       this.router.navigated = false;
+//     })
+// }
 
 // onFileChanged(event: any) {
 //   this.files = event.target.files;

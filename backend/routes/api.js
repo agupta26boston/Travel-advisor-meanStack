@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 const db = "mongodb://localhost:27017/travelapp";
 const destination = require('../models/destination');
 const attractions = require('../models/attraction');
+const comment = require('../models/comment');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db, function(err) {
@@ -13,11 +14,18 @@ mongoose.connect(db, function(err) {
 });
 
 router.post('/addcomments', function(req, res) {
-    console.log('Posting an comment');
+    console.log('Posting a comment');
    // var product = new campSchema.Product(req.body.dataProduct);
     //var attraction = new attractions();
-    var comment = req.body.title;
-    console.log(comment);
+    var newComment = new comment();
+    comment.comment_content = req.body.comment_content;
+    newComment.save(function(err, comment) {
+        if(err) {
+            console.log('Error inserting a comment');
+        } else {
+            res.json(comment);
+        }
+    })
 });
 
 // var boston = new destination({
@@ -81,7 +89,7 @@ router.get('/destinations/:id', function(req, res) {
 
 router.get('/attractions/:id', function(req, res) {
     console.log('Requesting a specific attraction');
-    attractions.findById(req.params.id)
+    attractions.findById(req.params.id).populate('comments')
         .exec(function(err, attractions) {
             if (err) {
                 console.log('Error getting the destination');

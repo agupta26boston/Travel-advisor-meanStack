@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { UserService } from './user.service';
 import {Attraction} from './attraction';
+import { Comment } from './comment';
 
 @Injectable()
 export class DestinationService {
@@ -37,10 +38,10 @@ export class DestinationService {
   //       this.authenticate(res);
   //     });
   //   }
-insertAttraction(post:string){
+  insertComment(post: Comment){
 
-    let headers= new Headers({'Content-Type':'application-json'});
-    let options= new RequestOptions({headers:headers});
+    let headers= new Headers({'Content-Type': 'application/json'});
+    let options= new RequestOptions({ headers: headers });
 
     return this._http.post('/api/addComments',JSON.stringify(post),options)
     .map(result=>this.result.json());
