@@ -8,7 +8,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {

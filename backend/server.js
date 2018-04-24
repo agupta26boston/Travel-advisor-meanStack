@@ -4,8 +4,8 @@ const path = require('path');
 const http = require('http');
 var app = express();
 
-const api = require('./routes/api')
-const auth = require('./routes/auth')
+const api = require('./routes/api.js')
+const auth = require('./routes/auth.js')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
