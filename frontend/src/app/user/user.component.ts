@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   loginData = {
     email: '',
     password: ''
-  }
+  };
 
   login() {
     this.auth.login(this.loginData);

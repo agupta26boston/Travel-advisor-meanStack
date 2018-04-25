@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 const db = "mongodb://localhost:27017/travelapp";
 const destination = require('../models/destination');
 const attractions = require('../models/attraction');
+const comment = require('../models/comment');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db, function(err) {
@@ -12,19 +13,36 @@ mongoose.connect(db, function(err) {
     }
 });
 
+router.post('/attractions/:id', function(req, res) {
+    var newComment = new comment();
+    var att_id = req.body.attraction_id;
+    newComment.attraction_id = req.body.attraction_id;
+    newComment.comment_content = req.body.comment_content;
+    newComment.save(function(err, comment) {
+        if (err) {
+            console.log('Error inserting a comment');
+        } else {
+            res.json(comment);
+        }
+    });
+    attractions.findByIdAndUpdate(att_id, { $push: { comments: newComment } }, { safe: true, upsert: true },
+        function(err, model) {
+            console.log(err);
+        });
 
-router.post('/addcomments', function(req, res) {
-    console.log('Posting an comment');
-   // var product = new campSchema.Product(req.body.dataProduct);
-    //var attraction = new attractions();
-    var comment = req.body.title;
-    console.log(comment);
+    // attractions.findById(req.body.attraction_id).comments.push(newComment)
+    // attractions.save(function(err) {
+    //     if (err) return handleError(err);
+    // });
 });
 
 // var boston = new destination({
 //     _id: new mongoose.Types.ObjectId(),
 //     title: 'Boston',
-//     desc: "Welcome to Boston!"
+//     desc: "Welcome to Bos!",
+//     img_src: "../assets/images/Boston.jpg",
+//     latitude: 42.3601,
+//     longitude: -71.0589
 // });
 
 // boston.save(function(err) {
@@ -32,12 +50,27 @@ router.post('/addcomments', function(req, res) {
 // });
 
 // var attraction1 = new attractions({
-//     destination_id: '5ad670bc78ccff22cc7e4559',
-//     att_name: 'MFA1',
-//     att_desc: 'near11 NEU'
+//     destination_id: boston._id,
+//     att_name: 'Museum of Fine Arts',
+//     att_desc: 'Located near Northeastern University',
+//     img_src: "../assets/images/mfa.jpg"
 // });
 
 // attraction1.save(function(err) {
+//     if (err) return handleError(err);
+// });
+
+// var comment1 = new comment({
+//     attraction_id: attraction1._id,
+//     comment_content: "A beautiful museum"
+// });
+
+// comment1.save(function(err) {
+//     if (err) return handleError(err);
+// });
+
+// attraction1.comments.push(comment1)
+// boston.save(function(err) {
 //     if (err) return handleError(err);
 // });
 
@@ -81,13 +114,26 @@ router.get('/destinations/:id', function(req, res) {
 
 router.get('/attractions/:id', function(req, res) {
     console.log('Requesting a specific attraction');
-    attractions.findById(req.params.id)
+    attractions.findById(req.params.id).populate('comments')
         .exec(function(err, attractions) {
             if (err) {
-                console.log('Error getting the destination');
+                console.log('Error getting the attraction');
             } else {
                 res.json(attractions);
-                 console.log(attractions);
+                //  console.log(attractions);
+            }
+        });
+});
+
+router.get('/delete/:id', function(req, res) {
+    console.log('Deleting a Comment');
+    comment.findByIdAndRemove(req.params.id)
+        .exec(function(err, com) {
+            if (err) {
+                console.log('Error deleting the comment');
+            } else {
+                res.json(com);
+                //  console.log(attractions);
             }
         });
 });
@@ -113,10 +159,3 @@ function checkAuthenticated(req, res, next) {
 }
 
 module.exports = router;
-
-// userNew.create({
-//     name: 'user1',
-//     gender: 'female'
-// }).then(function(err, usernew) {
-//     console.log(err, usernew);
-// });0

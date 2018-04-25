@@ -7,10 +7,10 @@ const destinationSchema = new Schema({
     _id: Schema.Types.ObjectId,
     title: String,
     desc: String,
-    img_src:String,
+    img_src: String,
     attractions: [{ type: Schema.Types.ObjectId, ref: 'attractions' }],
     latitude: Number,
-    longitude:Number
+    longitude: Number
 });
 
-module.exports = mongoose.model('destinations',destinationSchema);
+module.exports = mongoose.model('destinations', destinationSchema);

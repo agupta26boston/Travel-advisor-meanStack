@@ -26,6 +26,7 @@ export class UserService {
   }
 
   login(loginData) {
+
     this._http.post('/auth/login', loginData).subscribe(res => {
       this.authenticate(res);
     });
@@ -40,16 +41,20 @@ export class UserService {
   logout() {
     localStorage.removeItem(this.NAME_KEY);
     localStorage.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/']);
   }
 
-  authenticate(res){
-    var authResponse = res.json();
-    
-                if(!authResponse.token)
+  authenticate(res) {
+    const authResponse = res.json();
+
+                if (!authResponse.token) {
+                    alert('Authentication Failed');
+                    document.location.reload(true);
                     return;
-    
-                localStorage.setItem(this.TOKEN_KEY, authResponse.token)
-                localStorage.setItem(this.NAME_KEY, authResponse.firstName)
-                this.router.navigate(['/']);
+                }
+
+                localStorage.setItem(this.TOKEN_KEY, authResponse.token);
+                localStorage.setItem(this.NAME_KEY, authResponse.firstName);
+                this.router.navigate(['/home']);
 }
 }

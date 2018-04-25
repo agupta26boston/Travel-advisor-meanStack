@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { DestinationComponent } from './destination/destination.component';
 import { UserComponent } from './user/user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { WorldsBestComponent } from './worlds-best/worlds-best.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
     // url: localhost:3000/createUser
     path: 'createUser',
     component: CreateUserComponent
+  },
+  {
+    path: 'worldsBest',
+    component: WorldsBestComponent
   }
 ];
 

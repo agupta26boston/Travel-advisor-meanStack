@@ -22,15 +22,20 @@ export class CreateUserComponent {
 
    onSubmit() {
      console.log(this.form.errors);
-     this.user.register(this.form.value);
+     // document.location.reload(true);
+      this.user.register(this.form.value);
    }
 }
 
 function matchingFields(field1, field2) {
   return form => {
-    if (form.controls[field1].value !== form.controls[field2].value) { return { mismatchedFields: true}; }
-  };
-}
+    if (form.controls[field1].value !== form.controls[field2].value) {
+      return { mismatchedFields: true}; }
+    };
+
+  }
+
+  // document.location.reload(true);
 
 function emailValid() {
   return control => {
