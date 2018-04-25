@@ -14,7 +14,7 @@ mongoose.connect(db, function(err) {
 
 router.post('/addcomments', function(req, res) {
     console.log('Posting an comment');
-   // var product = new campSchema.Product(req.body.dataProduct);
+    // var product = new campSchema.Product(req.body.dataProduct);
     //var attraction = new attractions();
     var comment = req.body.title;
     console.log(comment);
@@ -23,28 +23,45 @@ router.post('/addcomments', function(req, res) {
 // var boston = new destination({
 //     _id: new mongoose.Types.ObjectId(),
 //     title: 'Boston',
-//     desc: "Welcome to Boston!"
-// });
+//     desc: "Welcome to Bos!",
+//     img_src: "../assets/images/Boston.jpg",
+//     latitude: 42.3601,
+//     longitude: -71.0589
+//  });
 
-// boston.save(function(err) {
+//  boston.save(function(err) {
 //     if (err) return handleError(err);
-// });
+//  });
 
-// var attraction1 = new attractions({
-//     destination_id: '5ad670bc78ccff22cc7e4559',
-//     att_name: 'MFA1',
-//     att_desc: 'near11 NEU'
-// });
+//  var attraction1 = new attractions({
+//     destination_id: boston._id,
+//     att_name: 'Museum of Fine Arts',
+//     att_desc: 'Located near Northeastern University',
+//     img_src: "../assets/images/mfa.jpg"
+//  });
 
-// attraction1.save(function(err) {
+//  attraction1.save(function(err) {
 //     if (err) return handleError(err);
-// });
+//  });
 
+//  var comment1 = new comment({
+//     attraction_id: attraction1._id,
+//     comment_content: "A beautiful museum"
+//  });
 
-// boston.attractions.push(attraction1)
-// boston.save(function(err) {
+//  comment1.save(function(err) {
 //     if (err) return handleError(err);
-// });
+//  });
+
+//  attraction1.comments.push(comment1)
+//  boston.save(function(err) {
+//     if (err) return handleError(err);
+//  });
+
+//  boston.attractions.push(attraction1)
+//  boston.save(function(err) {
+//     if (err) return handleError(err);
+//  });
 
 // attractions.
 // find({ destination_id: destination._id }).
