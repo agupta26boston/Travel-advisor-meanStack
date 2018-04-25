@@ -38,48 +38,48 @@ router.post('/attractions/:id', function(req, res) {
     // });
 });
 
-var boston = new destination({
-    _id: new mongoose.Types.ObjectId(),
-    title: 'Boston',
-    desc: "Welcome to Bos!",
-    img_src: "../assets/images/Boston.jpg"
-});
+// var boston = new destination({
+//     _id: new mongoose.Types.ObjectId(),
+//     title: 'Boston',
+//     desc: "Welcome to Bos!",
+//     img_src: "../assets/images/Boston.jpg"
+// });
 
-boston.save(function(err) {
-    if (err) return handleError(err);
-});
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
-var attraction1 = new attractions({
-    destination_id: boston._id,
-    att_name: 'Museum of Fine Arts',
-    att_desc: 'Located near Northeastern University',
-    img_src: "../assets/images/mfa.jpg",
-    latitude: 42.3601,
-    longitude: -71.0589
-});
+// var attraction1 = new attractions({
+//     destination_id: boston._id,
+//     att_name: 'Museum of Fine Arts',
+//     att_desc: 'Located near Northeastern University',
+//     img_src: "../assets/images/mfa.jpg",
+//     latitude: 42.3601,
+//     longitude: -71.0589
+// });
 
-attraction1.save(function(err) {
-    if (err) return handleError(err);
-});
+// attraction1.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
-var comment1 = new comment({
-    attraction_id: attraction1._id,
-    comment_content: "A beautiful museum"
-});
+// var comment1 = new comment({
+//     attraction_id: attraction1._id,
+//     comment_content: "A beautiful museum"
+// });
 
-comment1.save(function(err) {
-    if (err) return handleError(err);
-});
+// comment1.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
-attraction1.comments.push(comment1)
-boston.save(function(err) {
-    if (err) return handleError(err);
-});
+// attraction1.comments.push(comment1)
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
-boston.attractions.push(attraction1)
-boston.save(function(err) {
-    if (err) return handleError(err);
-});
+// boston.attractions.push(attraction1)
+// boston.save(function(err) {
+//     if (err) return handleError(err);
+// });
 
 // attractions.
 // find({ destination_id: destination._id }).
@@ -122,6 +122,19 @@ router.get('/attractions/:id', function(req, res) {
                 console.log('Error getting the attraction');
             } else {
                 res.json(attractions);
+                //  console.log(attractions);
+            }
+        });
+});
+
+router.get('/delete/:id', function(req, res) {
+    console.log('Deleting a Comment');
+    comment.findByIdAndRemove(req.params.id)
+        .exec(function(err, com) {
+            if (err) {
+                console.log('Error deleting the comment');
+            } else {
+                res.json(com);
                 //  console.log(attractions);
             }
         });

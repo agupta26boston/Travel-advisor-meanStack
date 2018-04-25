@@ -45,6 +45,10 @@ export class DestinationService {
     return this._http.post('/api/attractions/' + id,JSON.stringify(post),options)
     .map(result=>this.result = result.json());
   }
+  deleteComment(id) {
+    return this._http.get('/api/delete/' + id)
+      .map(result => this.result = result.json());
+  }
   }
 
 

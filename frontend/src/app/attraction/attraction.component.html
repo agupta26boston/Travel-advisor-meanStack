@@ -32,6 +32,7 @@
   
 	<div *ngFor="let comm of attraction?.comments">
 		<p>Comments is: {{comm.comment_content}}</p>
+		<button (click)="deleteComment(comm._id)" class="btns">Delete Comment</button>
 	</div>
 
     <p>

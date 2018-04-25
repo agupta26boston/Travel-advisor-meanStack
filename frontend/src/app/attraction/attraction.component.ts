@@ -55,5 +55,13 @@ addComment(comment: Comment,id) {
     });
 }
 
+deleteComment(commentId) {
+  this._destinationService.deleteComment(commentId)
+    .subscribe(res => {
+      // this.router.navigateByUrl('/');
+      location.reload();
+    })
+}
+
 }
 
