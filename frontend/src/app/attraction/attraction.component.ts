@@ -23,12 +23,11 @@ export class AttractionComponent implements OnInit {
   attraction: Array<Attraction>;
   comment: Array<Comment> = [];
 
-  @ViewChild('gmap') gmapElement: any;
-  map: google.maps.Map;
+
  //public files: any[];
    //this.files = [];
-  constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute,private fb: FormBuilder) {}
-   
+  // tslint:disable-next-line:max-line-length
+  constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute, private fb: FormBuilder) {}s
 
   ngOnInit() {
     this.aR.params.subscribe((params) => {
@@ -44,6 +43,14 @@ export class AttractionComponent implements OnInit {
   //maps    
   
 }
+// ngAfterViewInit(){
+// var mapProp = {
+//   center: new google.maps.LatLng(42.3601,71.0589),
+//   zoom: 5,
+//   mapTypeId: google.maps.MapTypeId.ROADMAP
+//   };
+//  this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+// }
 
 addComment(comment: Comment,id) { 
   // console.log(this.commentFrm.value);
