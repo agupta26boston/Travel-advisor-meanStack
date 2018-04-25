@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
 
   user: Array<User>;
   constructor(private auth: UserService, private socialAuthService: AuthService) { }
-
+  isloginSuccess: boolean = true;
   loginData = {
     email: '',
     password: ''

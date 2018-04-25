@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbdCarouselBasic } from '../carousel-basic';
+import { AgmCoreModule } from '@agm/core';
 //import { Ng4FilesModule } from './ng4-files';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -58,11 +61,17 @@ export function getAuthServiceConfigs() {
     DestinationComponent,
     CreateUserComponent,
     AttractionComponent,
+<<<<<<< HEAD
     //AttractionDetailsComponent,
     WorldsBestComponent
+=======
+    
+    // AttractionDetailsComponent
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     AppRoutingModule,
     HttpModule,
     SocialLoginModule,
@@ -70,7 +79,10 @@ export function getAuthServiceConfigs() {
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCZ5z9OlyDgtkYg_hMLMfCZDuru51cIgQ4'
+    })
   ],
 
   providers: [DestinationService, {

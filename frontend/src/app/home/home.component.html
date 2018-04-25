@@ -1,15 +1,54 @@
-<div class="container">
-    <p>Destinations</p>
-    <div class="row">
-        <div class="col-md-4" *ngFor="let destination of destinations">
-            <div class="thumbnail">
-                <a routerLink="/destinations/{{ destination._id }}">
-                    <img src="../assets/images/lights.jpg" alt="Lights" style="width:100%">
-                    <div class="caption">
-                        <h3> {{ destination.title }} </h3>
-                        <p> {{ destination.desc | slice: 0:330 }} </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <!-- <div #gmap style="width:100%;height:400px"></div> -->
+<!-- Search box -->
+<div id= "searchid" class="container">
+    <div class="input-group">
+      <input #search id="input1"type="text" class="form-control typeahead form-control" placeholder="Search...">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" (click) = 'searchDestination(search.value)'>Go!</button>
+      </span>
+    </div>
+  </div>
+  <!--HTML code to display Searched destination, based on if condition
+  if isSingleDestination flag  is true display below block else display elseBlock -->
+  <div *ngIf="isSingleDestination ; else elseBlock">
+    <div *ngIf="searchedDest">
+  
+    <h2 align = "top" id="searchHeading">You searched for Destination!!</h2>
+    <div class="row col-md-4">
+    <a routerLink="/destinations/{{ searchedDest._id }}">
+    <img src="{{searchedDest.img_src}}" alt="{{searchedDest.title}}" width="300" height="200">
+    <div class="caption">
+        <h3> {{ searchedDest.title }} </h3>
+        <p> {{ searchedDest.desc | slice: 0:330 }} </p>
+    </div>
+    </a>
+    </div>
+  </div>
+  <div *ngIf="!searchedDest">
+    
+         <strong>Oops!</strong> Sorry No results found !!
+      
+   </div>
+  </div>
+  
+  <!-- HTML code to display all the destinations by default-->
+  
+
+  <ng-template #elseBlock>
+  <ngb-carousel >
+      <div class="col-md-3" *ngFor="let destination of destinations">
+    <ng-template ngbSlide> 
+        <a routerLink="/destinations/{{ destination._id }}">
+            
+      <img src="{{destination.img_src}}" alt="Random first slide" width="100%" height="50%">
+      <div class="carousel-caption">
+         <h3> {{ destination.title }} </h3>
+        <p> {{ destination.desc | slice: 0:330 }} </p>
+      
+      </div>
+    </a>
+    </ng-template>
+    
+    </div>
+  </ngb-carousel>
+</ng-template>
+  <div #gmap style="width:100%;height:400px"></div> 
