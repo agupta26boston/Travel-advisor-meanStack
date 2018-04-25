@@ -22,10 +22,12 @@ export class AttractionComponent implements OnInit {
   constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute, private fb: FormBuilder) { }
 
   ngOnInit() {
-
+    this.aR.params.subscribe((params) => {
     this.commentFrm = this.fb.group({
-      'comment_content' : [null]
+      'comment_content' : [null],
+      'attraction_id' : [params['id']]
     });
+  });
     this.aR.params.subscribe((params) => {
       const id = params['id'];
       this._destinationService.getAttraction(id)

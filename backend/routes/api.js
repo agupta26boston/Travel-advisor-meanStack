@@ -14,10 +14,8 @@ mongoose.connect(db, function(err) {
 });
 
 router.post('/attractions/:id', function(req, res) {
-    console.log('Posting a comment');
-   // var product = new campSchema.Product(req.body.dataProduct);
-    //var attraction = new attractions();    
     var newComment = new comment();
+    newComment.attraction_id = req.body.attraction_id;
     newComment.comment_content = req.body.comment_content;     
     newComment.save(function(err, comment) {
         if(err) {
@@ -26,6 +24,11 @@ router.post('/attractions/:id', function(req, res) {
             res.json(comment);
         }
     });
+
+    // attractions.findById(req.body.attraction_id).comments.push(newComment)
+    // attractions.save(function(err) {
+    //     if (err) return handleError(err);
+    // });
     // attractions.findById(req.params.id).comments.push(newComment)  
 });
 
@@ -109,7 +112,7 @@ router.get('/attractions/:id', function(req, res) {
                 console.log('Error getting the attraction');
             } else {
                 res.json(attractions);
-                 console.log(attractions);
+                //  console.log(attractions);
             }
         });
 });
