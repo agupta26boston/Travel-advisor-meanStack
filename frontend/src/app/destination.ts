@@ -3,5 +3,7 @@ export class Destination {
     title: string;
     desc: string;
     img_src:string;
-    attractions: Array<Object>;
+    attractions: Array<Object>;    
+    latitude: number;
+    longitude: number;
 }

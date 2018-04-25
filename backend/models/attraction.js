@@ -7,9 +7,7 @@ const attractionSchema = new Schema({
     att_name: String,
     att_desc: String,
     comments: [{ type: Schema.Types.ObjectId, ref: 'comments' }],
-    img_src: String,
-    latitude: Number,
-    longitude: Number
+    img_src: String
 });
 
-module.exports = mongoose.model('attractions',attractionSchema);
+module.exports = mongoose.model('attractions', attractionSchema);
