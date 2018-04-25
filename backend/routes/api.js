@@ -12,6 +12,7 @@ mongoose.connect(db, function(err) {
     }
 });
 
+
 router.post('/addcomments', function(req, res) {
     console.log('Posting an comment');
    // var product = new campSchema.Product(req.body.dataProduct);
@@ -39,7 +40,6 @@ router.post('/addcomments', function(req, res) {
 // attraction1.save(function(err) {
 //     if (err) return handleError(err);
 // });
-
 
 // boston.attractions.push(attraction1)
 // boston.save(function(err) {
@@ -87,7 +87,7 @@ router.get('/attractions/:id', function(req, res) {
                 console.log('Error getting the destination');
             } else {
                 res.json(attractions);
-                // console.log(destination);
+                 console.log(attractions);
             }
         });
 });

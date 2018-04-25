@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DestinationService } from '../destination.service';
 import { Destination } from '../destination';
 import { Router, ActivatedRoute } from '@angular/router';
+
 // import { Attraction } from '../attraction';
 
 @Component({
@@ -12,7 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DestinationComponent implements OnInit {
 
   destination: Array<Destination>;
-  // attraction: Array<Attraction>;
+  //image source 
+  img_src = "../assets/images/Boston.jpg";
 
   constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute) { }
 
