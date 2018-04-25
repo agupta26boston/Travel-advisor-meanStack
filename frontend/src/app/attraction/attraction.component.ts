@@ -36,8 +36,6 @@ export class AttractionComponent implements OnInit {
       'comment_content' : [null],
       'attraction_id' : [params['id']]
     });
-  });
-    this.aR.params.subscribe((params) => {
       const id = params['id'];
       this._destinationService.getAttraction(id)
         .subscribe(res => this.attraction = res);

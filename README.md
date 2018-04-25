@@ -1,10 +1,10 @@
-#Travel Advisor
+### Travel Advisor
 final-project-black-mirror created by GitHub Classroom
 
 Travel Advisor is an app in which a user can search for different destinations and find it's popular attractions.
 Rating is provided for each attraction.
 
-##Getting Started
+### Getting Started
 
 Run node server.js on backend folder using command line to start the server at localhost:3000.
 
