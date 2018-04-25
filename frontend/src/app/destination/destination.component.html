@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 
@@ -31,6 +32,7 @@
                                 <p> {{ attrac.att_desc | slice: 0:330 }} </p>
                             </div>
                         </a>
+
                     </div>
                     <agm-map [latitude]="destination.latitude" [longitude]="destination.longitude">
                             <agm-marker [latitude]="destination.latitude" [longitude]="destination.longitude"></agm-marker>

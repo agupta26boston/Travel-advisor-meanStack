@@ -1,62 +1,55 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
 
-	<title>SoftAOX | Simple Comment Box using AngularJS</title>  
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>SoftAOX | Simple Comment Box using AngularJS</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZ5z9OlyDgtkYg_hMLMfCZDuru51cIgQ4"></script> 
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZ5z9OlyDgtkYg_hMLMfCZDuru51cIgQ4"></script>
 </head>
+
 <body>
-        
-<p>
-    Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}}
-    longitude : {{attraction.longitude}} lattitude: {{attraction.latitude}}
-</p>
 
-<ul class="nav-filter__list">
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta">Overview</a>
-    </li>
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta/hotels">Reviews by other users</a>
-    </li>
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta/restaurants">Photos</a>
-    </li>
-    <li class="nav-filter__item ">
-        <a href="/travel-guide/atlanta/bars">Audio</a>
-    </li>
-
-</ul>
-<div class="article-container">
-    <form [formGroup]="form" >
+    <p>
+        Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}} longitude : {{attraction.longitude}}
+        lattitude: {{attraction.latitude}}
+    </p>
 
 
-   
+    <img src="{{attraction.img_src}}" alt="{{attraction.att_name}}" width="500" height="200">
 
-        <div class="row expanded">
-            <div class="small-12 columns">
-                <label>Article Title
-                    <input #search id="test" type="text" name="title"  class="form-control" formControlName="title" autofocus required>
-                </label>
-                <div class="alert" *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
-                    You must specify a title that's at least 10 characters long.
-                </div> 
 
-                <ngb-rating [(rate)]="currentRate"></ngb-rating>
-<hr>
-<pre>Rate: <b>{{currentRate}}</b></pre>
 
-      
-                <button class="btn btn-primary" type="button" (click) = 'addAttraction(search.value)'>Go!</button>
+    <div class="article-container">
+        <form [formGroup]="form">
 
+
+
+
+            <div class="row expanded">
+                <div class="small-12 columns">
+                    <label>Article Title
+                        <input #search id="test" type="text" name="title" class="form-control" formControlName="title" autofocus required>
+                    </label>
+                    <div class="alert" *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
+                        You must specify a title that's at least 10 characters long.
+                    </div>
+
+                    <ngb-rating [(rate)]="currentRate"></ngb-rating>
+                    <hr>
+                    <pre>Rate: <b>{{currentRate}}</b></pre>
+
+
+                    <button class="btn btn-primary" type="button" (click)='addAttraction(search.value)'>Go!</button>
+
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+
 
 
 
