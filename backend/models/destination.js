@@ -8,7 +8,9 @@ const destinationSchema = new Schema({
     title: String,
     desc: String,
     img_src:String,
-    attractions: [{ type: Schema.Types.ObjectId, ref: 'attractions' }]
+    attractions: [{ type: Schema.Types.ObjectId, ref: 'attractions' }],
+    latitude: Number,
+    longitude:Number
 });
 
 module.exports = mongoose.model('destinations',destinationSchema);
