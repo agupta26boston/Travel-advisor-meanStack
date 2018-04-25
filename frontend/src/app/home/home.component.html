@@ -24,9 +24,9 @@
     </div>
   </div>
   <div *ngIf="!searchedDest">
-    
-         <strong>Oops!</strong> Sorry No results found !!
-      
+    <ngb-alert [dismissible]="false">
+      <strong>Warning!</strong> Better check yourself, Destination does not exist.
+    </ngb-alert>
    </div>
   </div>
   
