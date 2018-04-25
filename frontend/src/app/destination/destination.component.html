@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
-
     <title>SoftAOX | Simple Comment Box using AngularJS</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
@@ -12,15 +10,10 @@
 </head>
 
 <body>
-
-
-    {{ destination.latitude }} {{ destination.longitude}}
-
-
-
+<!--HTML code to display Destination -->
     <div class="container" *ngIf="destination">
-        <a routerLink="#">{{ destination.title }}</a>
-        <p> {{ destination.desc }} </p>
+       <h1  class="aligntext"> <a routerLink="#">{{ destination.title }}</a></h1>
+        <p class="aligntext"> {{ destination.desc }} </p>
         <div class="row">
             <div class="col-md-4" *ngFor="let attrac of destination.attractions">
                 <div class=" thumbnail ">

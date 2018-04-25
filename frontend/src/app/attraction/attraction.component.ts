@@ -43,7 +43,7 @@ export class AttractionComponent implements OnInit {
   //maps    
   
 }
-
+//Service method to add commment
 addComment(comment: Comment,id) { 
   if(this.commentFrm.value.comment_content !== null){
     this._destinationService.insertComment(comment,id)
@@ -57,7 +57,7 @@ addComment(comment: Comment,id) {
   }
   
 }
-
+//Service to delete comment
 deleteComment(commentId) {
   this._destinationService.deleteComment(commentId)
     .subscribe(res => {
