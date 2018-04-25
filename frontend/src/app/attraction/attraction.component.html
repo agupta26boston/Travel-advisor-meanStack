@@ -12,32 +12,33 @@
 </head>
 
 <body>
-    <h1>
-        Name of Attraction : {{ attraction?.att_name}} <br/>
-        Description of Attraction : {{ attraction?.att_desc}} 
-    </h1>
+    <h4 align="">
+        Attraction : {{ attraction?.att_name}}
+        <br/> Description : {{ attraction?.att_desc}}
+    </h4>
     <img src="{{attraction?.img_src}}" alt="{{attraction?.att_name}}" width="80%" height="300">
     <div class="container">
         <form [formGroup]="commentFrm" (ngSubmit)="addComment(commentFrm.value)" *ngIf="commentFrm">
             <div class="row">
-                <div class="col-md-3">
-                    <label>
-					Add Comment
-					<input type="text" name="comment_content" [formControl]="commentFrm.controls['comment_content']" formControlName="comment_content">
-				</label>
-                    <input type="submit" class="cta-btn filled" value="Post Comment" [disabled]="!commentFrm.valid">
+                <div>
+                    
+                        Add Comment
+                        <input type="text" name="comment_content" [formControl]="commentFrm.controls['comment_content']" formControlName="comment_content">
+                    
+
+                    <input type="submit" class="btn btn-primary" value="Post Comment" [disabled]="!commentFrm.valid">
                 </div>
             </div>
         </form>
     </div>
 
     <ngb-rating [(rate)]="currentRate"></ngb-rating>
-<hr>
-<pre>Rate: <b>{{currentRate}}</b></pre>
+    <hr>
+    <pre>Rate: <b>{{currentRate}}</b></pre>
 
     <div *ngFor="let comm of attraction?.comments">
         <p>Comments {{comm.comment_content}}</p>
-        <button (click)="deleteComment(comm._id)" class="btns">Delete Comment</button>
+        <button (click)="deleteComment(comm._id)" class="btn btn-primary">Delete Comment</button>
     </div>
 </body>
 
