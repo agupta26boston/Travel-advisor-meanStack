@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DestinationService } from '../destination.service';
 import { Destination } from '../destination';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
+import { ViewChild } from '@angular/core';
+import { } from '@types/googlemaps';
 // import { Attraction } from '../attraction';
 
 @Component({
@@ -12,6 +15,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DestinationComponent implements OnInit {
 
   destination: Array<Destination>;
+  @ViewChild('gmap') gmapElement: any;
+  map: google.maps.Map;
   // attraction: Array<Attraction>;
 
   constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute) { }

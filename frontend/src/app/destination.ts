@@ -4,4 +4,6 @@ export class Destination {
     desc: string;
     img_src:string;
     attractions: Array<Object>;
+    latitude:number;
+    longitude:number;
 }
