@@ -43,41 +43,41 @@ router.post('/attractions/:id', function(req, res) {
 //     img_src: "../assets/images/Boston.jpg",
 //     latitude: 42.3601,
 //     longitude: -71.0589
-//  });
+// });
 
-//  boston.save(function(err) {
+// boston.save(function(err) {
 //     if (err) return handleError(err);
-//  });
+// });
 
-//  var attraction1 = new attractions({
+// var attraction1 = new attractions({
 //     destination_id: boston._id,
 //     att_name: 'Museum of Fine Arts',
 //     att_desc: 'Located near Northeastern University',
 //     img_src: "../assets/images/mfa.jpg"
-//  });
+// });
 
-//  attraction1.save(function(err) {
+// attraction1.save(function(err) {
 //     if (err) return handleError(err);
-//  });
+// });
 
-//  var comment1 = new comment({
+// var comment1 = new comment({
 //     attraction_id: attraction1._id,
 //     comment_content: "A beautiful museum"
-//  });
+// });
 
-//  comment1.save(function(err) {
+// comment1.save(function(err) {
 //     if (err) return handleError(err);
-//  });
+// });
 
-//  attraction1.comments.push(comment1)
-//  boston.save(function(err) {
+// attraction1.comments.push(comment1)
+// boston.save(function(err) {
 //     if (err) return handleError(err);
-//  });
+// });
 
-//  boston.attractions.push(attraction1)
-//  boston.save(function(err) {
+// boston.attractions.push(attraction1)
+// boston.save(function(err) {
 //     if (err) return handleError(err);
-//  });
+// });
 
 // attractions.
 // find({ destination_id: destination._id }).
