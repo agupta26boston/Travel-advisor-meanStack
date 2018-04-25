@@ -28,13 +28,8 @@ import {SocialLoginModule,AuthServiceConfig,FacebookLoginProvider,GoogleLoginPro
 import {UserService } from './user.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { AttractionComponent } from './attraction/attraction.component';
-<<<<<<< HEAD
-import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
+//import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
 import { WorldsBestComponent } from './worlds-best/worlds-best.component';
-=======
-
-// import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
->>>>>>> master
 // app routes will hold all the routes and the array will be of javascript object.
 
 
@@ -63,12 +58,8 @@ export function getAuthServiceConfigs() {
     DestinationComponent,
     CreateUserComponent,
     AttractionComponent,
-<<<<<<< HEAD
-    AttractionDetailsComponent,
+    //AttractionDetailsComponent,
     WorldsBestComponent
-=======
-    // AttractionDetailsComponent
->>>>>>> master
   ],
   imports: [
     BrowserModule,

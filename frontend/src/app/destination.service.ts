@@ -30,10 +30,6 @@ export class DestinationService {
       .map(result => this.result = result.json());
   }
 
-<<<<<<< HEAD
-
-}
-=======
   // addcomment(){
   //   register(user) {
   //     delete user.confirmPassword;
@@ -52,4 +48,3 @@ insertAttraction(post:string){
   }
 
 
->>>>>>> master

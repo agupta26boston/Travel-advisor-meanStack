@@ -12,18 +12,9 @@ mongoose.connect(db, function(err) {
     }
 });
 
-<<<<<<< HEAD
 auth.post('/login', function(req, res) {
     user.findOne({ email: req.body.email }, function(err, loginUser) {
-        if (err)
-            throw err;
-        console.log(err.details);
-
-=======
-auth.post('login', function(req, res) { 
-    user.findOne({email: req.body.email}, function(err, loginUser) {
         if (err) throw err;
->>>>>>> master
 
         if (!loginUser) {
             res.send({

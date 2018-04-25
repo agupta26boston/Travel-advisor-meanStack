@@ -41,18 +41,20 @@ export class UserService {
   logout() {
     localStorage.removeItem(this.NAME_KEY);
     localStorage.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/']);
   }
 
   authenticate(res) {
     const authResponse = res.json();
 
                 if (!authResponse.token) {
-                    // return;
                     alert('Authentication Failed');
+                    document.location.reload(true);
+                    return;
                 }
 
                 localStorage.setItem(this.TOKEN_KEY, authResponse.token);
                 localStorage.setItem(this.NAME_KEY, authResponse.firstName);
-                this.router.navigate(['/']);
+                this.router.navigate(['/home']);
 }
 }
