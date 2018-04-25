@@ -12,7 +12,7 @@ mongoose.connect(db, function(err) {
     }
 });
 
-auth.post('login', function(req, res) { 
+auth.post('/login', function(req, res) { 
     user.findOne({email: req.body.email}, function(err, loginUser) {
         if (err) throw err;
 
@@ -25,8 +25,10 @@ auth.post('login', function(req, res) {
             // Check if password matches
               if (loginUser.password == req.body.password) {
                 // Create token if the password matched and no error was thrown
-                var token = jwt.sign(loginUser.id, '123');
-                res.json({ firstName: loginUser.firstName, token });
+                console.log("Matched");
+                sendToken(loginUser, res);   
+                // var token = jwt.sign(loginUser.id, '123');
+                // res.json({ firstName: loginUser.firstName, token });
               } else {
                 res.send({
                   success: false,
