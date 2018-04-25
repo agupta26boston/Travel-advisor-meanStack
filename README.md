@@ -20,12 +20,6 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* **Umair Akhtar** 
-
-* **Ayush Gupta** 
-
-* **Janhavi Puniani** 
-
-* **Neha Varshney** 
+ 
 
 See also the list of [contributors](https://github.com/final-project-black-mirror/contributors) who participated in this project.
