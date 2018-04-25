@@ -15,6 +15,7 @@ mongoose.connect(db, function(err) {
 
 router.post('/attractions/:id', function(req, res) {
     var newComment = new comment();
+    var att_id = req.body.attraction_id;
     newComment.attraction_id = req.body.attraction_id;
     newComment.comment_content = req.body.comment_content;     
     newComment.save(function(err, comment) {
@@ -23,13 +24,18 @@ router.post('/attractions/:id', function(req, res) {
         } else {
             res.json(comment);
         }
+    });   
+    attractions.findByIdAndUpdate(att_id, 
+        {$push: {comments: newComment}},
+        {safe: true, upsert: true},
+        function(err, model) {
+        console.log(err);
     });
-
+    
     // attractions.findById(req.body.attraction_id).comments.push(newComment)
     // attractions.save(function(err) {
     //     if (err) return handleError(err);
     // });
-    // attractions.findById(req.params.id).comments.push(newComment)  
 });
 
 // var boston = new destination({

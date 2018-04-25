@@ -36,7 +36,7 @@ export class AttractionComponent implements OnInit {
 }
 
 addComment(comment: Comment,id) { 
-  console.log(this.commentFrm.value);
+  // console.log(this.commentFrm.value);
   this._destinationService.insertComment(comment,id)
     .subscribe(newComment => {
       this.comment.push(newComment);
