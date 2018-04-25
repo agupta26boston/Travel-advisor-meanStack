@@ -3,6 +3,8 @@ export class Attraction {
     att_name: string;
     att_desc: string;
     comments:Array<String>;
+    latitude: number;
+    longitude: number;
 }
 
 //export const comments: string[]=[""];
