@@ -13,6 +13,14 @@ mongoose.connect(db, function(err) {
 });
 
 
+router.post('/addcomments', function(req, res) {
+    console.log('Posting an comment');
+   // var product = new campSchema.Product(req.body.dataProduct);
+    //var attraction = new attractions();
+    var comment = req.body.title;
+    console.log(comment);
+});
+
 // var boston = new destination({
 //     _id: new mongoose.Types.ObjectId(),
 //     title: 'Boston',
@@ -32,7 +40,6 @@ mongoose.connect(db, function(err) {
 // attraction1.save(function(err) {
 //     if (err) return handleError(err);
 // });
-
 
 // boston.attractions.push(attraction1)
 // boston.save(function(err) {

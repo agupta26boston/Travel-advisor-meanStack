@@ -4,4 +4,7 @@ export class Attraction {
     att_desc: string;
     img_src:string;
     comments: Array<string>;
+    latitude: number;
+    longitude: number;
 }
+

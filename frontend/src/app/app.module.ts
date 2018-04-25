@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbdCarouselBasic } from '../carousel-basic';
+import { AgmCoreModule } from '@agm/core';
+//import { Ng4FilesModule } from './ng4-files';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -27,7 +31,8 @@ import {SocialLoginModule,AuthServiceConfig,FacebookLoginProvider,GoogleLoginPro
 import {UserService } from './user.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { AttractionComponent } from './attraction/attraction.component';
-import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
+
+// import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
 // app routes will hold all the routes and the array will be of javascript object.
 
 
@@ -56,10 +61,12 @@ export function getAuthServiceConfigs() {
     DestinationComponent,
     CreateUserComponent,
     AttractionComponent,
-    AttractionDetailsComponent
+    
+    // AttractionDetailsComponent
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     AppRoutingModule,
     HttpModule,
     SocialLoginModule,
@@ -67,7 +74,10 @@ export function getAuthServiceConfigs() {
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCZ5z9OlyDgtkYg_hMLMfCZDuru51cIgQ4'
+    })
   ],
 
   providers: [DestinationService, {

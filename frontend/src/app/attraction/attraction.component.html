@@ -1,14 +1,61 @@
+<!doctype html>
 <html>
+<head>
+<meta charset="UTF-8">
 
+
+	<title>SoftAOX | Simple Comment Box using AngularJS</title>  
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZ5z9OlyDgtkYg_hMLMfCZDuru51cIgQ4"></script> 
+</head>
+<body>
+        
 <p>
     Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}}
-    Comments is: {{attraction.comments}}
-    
+    longitude : {{attraction.longitude}} lattitude: {{attraction.latitude}}
 </p>
 
 
 <img src="{{attraction.img_src}}" alt="{{attraction.att_name}}" width="500" height="200">
-    
-</html> 
+
   
+</ul>
+<div class="article-container">
+    <form [formGroup]="form" >
+
+
+   
+
+        <div class="row expanded">
+            <div class="small-12 columns">
+                <label>Article Title
+                    <input #search id="test" type="text" name="title"  class="form-control" formControlName="title" autofocus required>
+                </label>
+                <div class="alert" *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
+                    You must specify a title that's at least 10 characters long.
+                </div> 
+
+                <ngb-rating [(rate)]="currentRate"></ngb-rating>
+<hr>
+<pre>Rate: <b>{{currentRate}}</b></pre>
+
+      
+                <button class="btn btn-primary" type="button" (click) = 'addAttraction(search.value)'>Go!</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<agm-map [latitude]="attraction.latitude" [longitude]="attraction.longitude">
+        <agm-marker [latitude]="attraction.latitude" [longitude]="attraction.longitude"></agm-marker>
+      </agm-map>
+<input type="file" name="file" id="file" (change)="onFileChanged($event)"  />
+
+</body>
+
+</html>
 
