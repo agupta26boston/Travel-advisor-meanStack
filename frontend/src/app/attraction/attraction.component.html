@@ -15,6 +15,7 @@
     <p>
         Name of Attraction is : {{ attraction?.att_name}} Description of Attraction is:: {{ attraction?.att_desc}} {{attraction?.longitude}} Latitude : {{attraction?.latitude}}
     </p>
+    <img src="{{attraction?.img_src}}" alt="{{attraction?.att_name}}" width="500" height="200">
     <div class="container">
         <form [formGroup]="commentFrm" (ngSubmit)="addComment(commentFrm.value)" *ngIf="commentFrm">
             <div class="row">
@@ -33,49 +34,6 @@
         <p>Comments is: {{comm.comment_content}}</p>
         <button (click)="deleteComment(comm._id)" class="btns">Delete Comment</button>
     </div>
-
-    <p>
-        Name of Attraction is : {{ attraction.att_name}} Description of Attraction is:: {{ attraction.att_desc}} longitude : {{attraction.longitude}} lattitude: {{attraction.latitude}}
-    </p>
-
-
-    <img src="{{attraction.img_src}}" alt="{{attraction.att_name}}" width="500" height="200">
-
-
-
-    <div class="article-container">
-        <form [formGroup]="form">
-
-
-
-
-            <div class="row expanded">
-                <div class="small-12 columns">
-                    <label>Article Title
-                        <input #search id="test" type="text" name="title" class="form-control" formControlName="title" autofocus required>
-                    </label>
-                    <div class="alert" *ngIf="!form.controls['title'].valid && form.controls['title'].touched">
-                        You must specify a title that's at least 10 characters long.
-                    </div>
-
-                    <ngb-rating [(rate)]="currentRate"></ngb-rating>
-                    <hr>
-                    <pre>Rate: <b>{{currentRate}}</b></pre>
-
-
-                    <button class="btn btn-primary" type="button" (click)='addAttraction(search.value)'>Go!</button>
-
-                </div>
-            </div>
-        </form>
-    </div>
-
-
-
-
-
-    <input type="file" name="file" id="file" (change)="onFileChanged($event)" />
-
 </body>
 
 </html>
