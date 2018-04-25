@@ -9,9 +9,10 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZ5z9OlyDgtkYg_hMLMfCZDuru51cIgQ4"></script> 
 </head>
-<body> -->
+<body>
 <p>
-    Name of Attraction is : {{ attraction?.att_name}} Description of Attraction is:: {{ attraction?.att_desc}}
+	Name of Attraction is : {{ attraction?.att_name}} Description of Attraction is:: {{ attraction?.att_desc}}
+	{{attraction?.longitude}} Latitude : {{attraction?.latitude}}
 </p>
 <div class="container">
 	<form [formGroup]="commentFrm" (ngSubmit)="addComment(commentFrm.value)" *ngIf="commentFrm">
@@ -31,6 +32,14 @@
 		<p>Comments is: {{comm.comment_content}}</p>
 	</div>
 
+<agm-map [latitude]="attraction?.latitude" [longitude]="attraction?.longitude">
+	<agm-marker [latitude]="attraction?.latitude" [longitude]="attraction?.longitude"></agm-marker>
+</agm-map>
+<!-- <input type="file" name="file" id="file" (change)="onFileChanged($event)"  /> -->
+
+</body>
+
+</html>
 
 
     

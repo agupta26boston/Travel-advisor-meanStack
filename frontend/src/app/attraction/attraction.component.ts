@@ -46,14 +46,6 @@ export class AttractionComponent implements OnInit {
   //maps    
   
 }
-ngAfterViewInit(){
-var mapProp = {
-  center: new google.maps.LatLng(42.3601,71.0589),
-  zoom: 5,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
- this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-}
 
 addComment(comment: Comment,id) { 
   // console.log(this.commentFrm.value);
