@@ -40,7 +40,8 @@ addComment(comment: Comment,id) {
   this._destinationService.insertComment(comment,id)
     .subscribe(newComment => {
       this.comment.push(newComment);
-      this.router.navigated=false;       
+      // this.router.navigateByUrl('/attractions/'+id)
+      location.reload();
     });
 }
 
