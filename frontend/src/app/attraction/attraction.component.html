@@ -30,6 +30,10 @@
         </form>
     </div>
 
+    <ngb-rating [(rate)]="currentRate"></ngb-rating>
+<hr>
+<pre>Rate: <b>{{currentRate}}</b></pre>
+
     <div *ngFor="let comm of attraction?.comments">
         <p>Comments is: {{comm.comment_content}}</p>
         <button (click)="deleteComment(comm._id)" class="btns">Delete Comment</button>
