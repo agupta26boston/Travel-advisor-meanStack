@@ -35,7 +35,7 @@
     <form [formGroup]="form" >
 
 
-    <!-- <input #search type="text" class="form-control" placeholder="First Name" formControlName="firstName" autofocus required> -->
+   
 
         <div class="row expanded">
             <div class="small-12 columns">
@@ -57,7 +57,7 @@
         </div>
     </form>
 </div>
-<!-- <div #gmap style="width:100%;height:400px" ></div> -->
+
 
 
 <agm-map [latitude]="attraction.latitude" [longitude]="attraction.longitude">
@@ -65,22 +65,7 @@
       </agm-map>
 <input type="file" name="file" id="file" (change)="onFileChanged($event)"  />
 
-<!-- <script type="text/javascript">
-function Controller($scope) {
-     $scope.comments = [];
-     $scope.btn_post = function() {
-         if ($scope.cmtName != '') {
-             $scope.comments.push($scope.cmtName);
-             $scope.cmtName = "";
-         }
-     }
-     $scope.post_cmt = function($home) {
-         $scope.comments.splice($home, 1);
-     }
- }
-</script> -->
 </body>
 
 </html>
 
-<!-- <app-attraction-details></app-attraction-details> -->

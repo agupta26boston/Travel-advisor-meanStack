@@ -23,7 +23,7 @@ export class AttractionComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
  //public files: any[];
- //  this.files = [];
+   //this.files = [];
   constructor(private _destinationService: DestinationService, private router: Router, private aR: ActivatedRoute,private fb: FormBuilder) {}
    
 

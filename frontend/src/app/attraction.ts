@@ -7,4 +7,3 @@ export class Attraction {
     longitude: number;
 }
 
-//export const comments: string[]=[""];
